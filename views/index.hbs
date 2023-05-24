@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{title}}</h1>
+            <p>Welcome to {{title}}</p>
+            <form action="" method="get">
+                <div class="form-group">
+                    <label for="exampleInputLocation1">Location</label>
+                    <input type="text" class="form-control" name="location" value="{{query}}" id="exampleInputLocation1"
+                           placeholder="Enter location">
+                </div>
+                <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+            </form>
+        </div>
+        <div class="col-12">
+
+            <div class="card text-center mb-3">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">Maribor MBajk Locations</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    {{#if closest}}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{closest.name}}</h5>
+                                <p class="card-text">{{closest.address}}</p>
+                                <p class="card-text"><small class="text-muted">Capacity: </small><b>{{closest.capacity}} </b><small class="text-muted">Stands: </small><b>{{closest.stands}} </b><small class="text-muted">Bikes: </small><b>{{closest.bikes}}</b></p>
+                                <a target="_blank" href="http://maps.google.com/?q={{closest.address}}+Maribor" class="btn
+                                btn-light">Open in Google Maps</a>
+                            </div>
+                        </div>
+                    {{else}}
+                        {{#each locations}}
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.name}}</h5>
+                                    <p class="card-text">{{this.address}}</p>
+                                    <p class="card-text"><small class="text-muted">Capacity: </small><b>{{this.capacity}} </b><small class="text-muted">Stands: </small><b>{{this.stands}} </b><small class="text-muted">Bikes: </small><b>{{this.bikes}}</b></p>
+                                    <a target="_blank" href="http://maps.google.com/?q={{this.address}}+Maribor" class="btn
+                                    btn-light">Open in Google Maps</a>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
